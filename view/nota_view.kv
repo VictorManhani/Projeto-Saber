@@ -1,0 +1,71 @@
+<Nota>:
+	BoxLayout:
+		orientation: 'vertical'
+		padding: dp('10')
+		spacing: dp('10')
+		canvas.before:
+			Color:
+				rgba: app.color_background2 if app.switch == True else app.color_background1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		GridLayout:
+			rows: 4
+			cols: 2
+			size_hint: 1, .8
+			MeuLabel:
+				text: 'Acertos'
+				size_hint: .5, 1
+				color: [1,1,1,1]
+				cor_fundo: [0,.6,0,1]
+			MeuLabel:
+				id: acertos
+				text: ''
+				size_hint: .5, 1
+				color: [0,0,0,1]
+				cor_fundo: [.9,.9,.9,1]
+			MeuLabel:
+				text: 'Erros'
+				size_hint: .5, 1
+				color: [1,1,1,1]
+				cor_fundo: [.6,0,0,1]
+			MeuLabel:
+				id: erros
+				text: ''
+				size_hint: .5, 1
+				color: [0,0,0,1]
+				cor_fundo: [.9,.9,.9,1]
+			MeuLabel:
+				text: 'Não Respondidas'
+				text_size: self.size
+				halign: 'center'
+				valign: 'middle'
+				size_hint: .5, 1
+				color: [1,1,1,1]
+				cor_fundo: [0.95,0.61,0.07,1]
+			MeuLabel:
+				id: nao_respondidas
+				text: ''
+				size_hint: .5, 1
+				color: [0,0,0,1]
+				cor_fundo: [.9,.9,.9,1]
+			MeuLabel:
+				text: 'Média'
+				size_hint: .5, 1
+				color: [1,1,1,1]
+				cor_fundo: [0,0,0,1]
+			MeuLabel:
+				id: media
+				text: ''
+				size_hint: .5, 1
+				color: [0,0,0,1]
+				cor_fundo: [.9,.9,.9,1]
+		BoxLayout:
+			size_hint: 1, .2
+			Botao:
+				text: 'Voltar'
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.screen_manager.current = "resultado"
+					app.screen_manager.transition.direction = "right"

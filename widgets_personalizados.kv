@@ -1,0 +1,176 @@
+<Botao>:
+	background_color: (0,0,0,0)
+	background_normal: ''
+	background_down: ''
+	font_size: app.tam_font
+	color: app.color_font
+	cor_fundo: [.5,.5,.5,1]
+	cor_fundo_pressionado: [.5,.5,.5,.5]
+	canvas.before:
+		Color:
+			rgba: self.cor_fundo if self.state == "normal" else self.cor_fundo_pressionado
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<ScrollableLabel>:
+	text: ''
+	cor_fundo: [.5,.5,.5,1]
+	Label:
+		size_hint_y: None
+		height: self.texture_size[1]
+		text_size: self.width, None
+		text: root.text
+		background_color: 0,0,0,0
+		font_size: app.tam_font
+		valign: 'middle'
+		halign: 'center'
+		canvas.before:
+			Color:
+				rgba: root.cor_fundo
+			RoundedRectangle:
+				pos: self.pos
+				size: self.size
+				radius: [15,]
+
+<MeuLabel@Label>:
+	background_color: 0,0,0,0
+	font_size: app.tam_font
+	valign: 'middle'
+	halign: 'center'
+	cor_fundo: [.5,.5,.5,1]
+	canvas.before:
+		Color:
+			rgba: self.cor_fundo
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<Titulo@Label>:
+	font_size: app.tam_font
+	color: app.color_font
+	canvas.before:
+		Color: 
+			rgba: app.color_background1 if app.switch == True else app.color_background2
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+
+<LabelPergunta@Label>:
+	background_color: 0,0,0,0
+	font_size: app.tam_font
+	canvas.before:
+		Color:
+			rgba: app.color_caixa_pergunta
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<LabelResposta@Label>:
+	background_color: 0,0,0,0
+	font_size: app.tam_font
+	canvas.before:
+		Color:
+			rgba: app.color_caixa_resposta
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<SpinnerBotao@Spinner>:
+	font_size: app.tam_font
+	background_color: 0,0,0,0
+	halign: 'center' if len(self.text) < 20 else 'left'
+	valign: 'middle'
+	padding: 50,50
+	canvas.before:
+		Color:
+			rgba: (app.color_button if self.state == "normal" else app.color_button_pressed)
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<MySpinnerOption@SpinnerOption>:
+	background_color: 0,0,0,0
+	background_normal: ''
+	background_down: ''
+	font_size: app.tam_font
+	canvas.before:
+		Color:
+			rgba: app.color_button if self.state == "normal" else app.color_button_pressed
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<MySpinnerOption2@SpinnerOption>:
+	background_color: 0,0,0,0
+	background_normal: ''
+	background_down: ''
+	font_size: app.tam_font - sp('10')
+	text_size: self.size
+	halign: 'center'
+	valign: 'middle'
+	canvas.before:
+		Color:
+			rgba: app.color_button_pressed if self.state == "normal" else app.color_button
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<Texto@TextInput>:
+	use_bubble: True
+	write_tab: True
+	font_size: app.tam_font
+	align: "center"
+	halign: "center"
+	background_color: 1,1,1,.5
+	cursor_color: 1,0,0,1
+	hint_text_color: 0.451, 0.451, 0.451, 1
+	multiline: False
+	scroll_x: 0
+
+<ToggleBotao@ToggleButton,RippleButton>:
+	background_color: 0,0,0,0
+	background_normal: ''
+	background_down: ''
+	font_size: app.tam_font
+	canvas.before:
+		Color:
+			rgba: app.color_button if self.state == "normal" else app.color_button_pressed
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<ToggleCheckBox>:
+	background_color: 0,0,0,0
+	background_normal: ''
+	background_down: ''
+	font_size: app.tam_font
+	text_size: self.size
+	halign: 'center'
+	valign: 'middle'
+	cor_fundo_normal: app.color_button
+	cor_fundo_pressionado: app.color_button_pressed2
+	canvas.before:
+		Color:
+			rgba: self.cor_fundo_normal if self.state == "normal" else self.cor_fundo_pressionado
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]
+
+<Toast>:
+	canvas:
+		Color:
+			rgba: app.toast_color
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [15,]

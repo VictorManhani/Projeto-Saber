@@ -1,0 +1,45 @@
+<Comentario>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: 10
+		padding: 10
+		canvas.before:
+			Color: 
+				rgba: app.color_background2 if app.switch == True else app.color_background1
+			RoundedRectangle:
+				size: self.size
+				pos: self.pos
+			Color: 
+				rgba: app.color_background2 if app.switch == True else app.color_background1
+			RoundedRectangle:
+				size: self.size[0] - 12, self.size[1] - 12
+				pos: self.pos[0] + 6, self.pos[1] + 6
+		BoxLayout:
+			id: container
+			orientation: 'vertical'
+			size_hint: 1, .8
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .2
+			ScrollView:
+				do_scroll_x: True
+				do_scroll_y: False
+				BoxLayout:
+					orientation: 'horizontal'
+					size_hint_x: None
+					width: self.minimum_width
+					spacing: dp('5')
+					padding: dp('5')
+					Botao:
+						text: 'Voltar'
+						size_hint: None, 1
+						width: self.texture_size[1]+len(self.text)*12
+						text_size: self.size
+						halign: 'center'
+					    valign: 'middle'
+					    cor_fundo: app.color_button
+						cor_fundo_pressionado: app.color_button_pressed
+						on_release:
+							app.screen_manager.current = "resultado"
+							app.screen_manager.transition.direction = "right"
+

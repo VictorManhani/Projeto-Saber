@@ -1,0 +1,121 @@
+<Configuracao>:
+	BoxLayout:
+		id: box
+		orientation: 'vertical'
+		padding: dp(5)
+		spacing: dp(5)
+		canvas.before:
+			Color:
+				rgba: app.color_background2 if app.switch == True else app.color_background1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .1
+			Titulo:
+				text: 'Configuração'
+				size_hint: 1, 1
+		BoxLayout:
+			size_hint: 1, .2
+			Label:
+				text: 'Modo Noite'
+				size_hint: 1, 1
+				color: app.color_font
+				font_size: app.tam_font
+				align: 'center'
+				halign: 'center'
+			Switch:
+				active: app.switch
+				size_hint: 1, 1
+				color: app.color_font
+				font_size: app.tam_font
+				align: 'center'
+				halign: 'center'
+				on_active:
+					app.switch = not app.switch
+					app.change_color()
+					app.salvar_configuracoes()
+					root.toast('Reinicie para aplicar as alterações!')
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .5
+			ScrollView:
+				do_scroll_x: False
+				do_scroll_y: True
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint_y: None
+					height: self.minimum_height
+					spacing: dp('5')
+					padding: dp('5')
+					ScrollableLabel:
+						text: 'hello'*100
+						size_hint: 1, None
+						height:  dp('50')
+						cor_fundo: [.2,0,.2,1]
+					MeuLabel:
+						text: 'MeuLabel'
+						size_hint: 1, None
+						height:  dp('50')
+						cor_fundo: app.color_button
+					Botao:
+						text: 'Toast'
+						size_hint: 1, None
+						height:  dp('50')
+						cor_fundo: app.color_button
+						cor_fundo_pressionado: app.color_button_pressed
+						on_release:
+							root.toast(texto.text)
+					Botao:
+						text: 'Botao'
+						size_hint: 1, None
+						height:  dp('50')
+						cor_fundo: app.color_button
+						cor_fundo_pressionado: app.color_button_pressed
+					SpinnerBotao:
+						text: 'SpinnerBotao'
+						option_cls: "MySpinnerOption"
+						size_hint: 1, None
+						height:  dp('50')
+					SpinnerBotao:
+						text: 'SpinnerBotao2'
+						option_cls: "MySpinnerOption2"
+						size_hint: 1, None
+						height:  dp('50')
+					LabelPergunta:
+						text: 'LabelPergunta'
+						size_hint: 1, None
+						height:  dp('50')
+					LabelResposta:
+						text: 'LabelResposta'
+						size_hint: 1, None
+						height:  dp('50')
+					Texto:
+						id: texto
+						text: 'Hello World'
+						hint_text: 'Texto'
+						size_hint: 1, None
+						height:  dp('50')
+						focus: True
+					ToggleBotao:
+						text: 'ToggleBotao'
+						size_hint: 1, None
+						height:  dp('50')
+					ToggleCheckBox:
+						size_hint: 1, None
+						height:  dp('50')
+						text: 'ToggleCheckBox'
+		BoxLayout:
+			size_hint: 1, .2
+			Botao:
+				text: 'Voltar'
+				font_size: app.tam_font
+				color: app.color_font
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.screen_manager.current = "inicio"
+					app.screen_manager.transition.direction = "right"
+			
+

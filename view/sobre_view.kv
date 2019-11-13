@@ -1,0 +1,52 @@
+<Sobre>:
+	BoxLayout:
+		orientation: 'vertical'
+		padding: dp('5')
+		spacing: dp('5')
+		canvas.before:
+			Color:
+				rgba: app.color_background2 if app.switch == True else app.color_background1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .1
+			Titulo:
+				text: 'Sobre'
+				size_hint: 1, 1
+		Label:
+			size_hint: 1, .2
+			text: "PROJETO SABER\nInovando & Criativando"
+			color: app.color_font
+			text_size: self.size
+			font_size: app.tam_font
+			align: 'center'
+			halign: 'center'
+		Label:
+			size_hint: 1, .2
+			text: "Desenvolvedor:\n Victor Gomes Manhani"
+			color: app.color_font
+			text_size: self.size
+			font_size: app.tam_font
+			align: 'center'
+			halign: 'center'
+		Label:
+			size_hint: 1, .2
+			text: "Versão:\n 1.5.1"
+			color: app.color_font
+			text_size: self.size
+			font_size: app.tam_font
+			align: 'center'
+			halign: 'center'
+		Widget:
+			size_hint: 1, .1
+		BoxLayout:
+			size_hint: 1, .2
+			Botao:
+				text: 'Voltar'
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.screen_manager.current = "inicio"
+					app.screen_manager.transition.direction = "right"

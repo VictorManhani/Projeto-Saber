@@ -1,0 +1,73 @@
+<Inicio>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: 10
+		padding: 10
+		canvas.before:
+			Color: 
+				rgba: app.color_background1 if app.switch == True else app.color_background2
+			RoundedRectangle:
+				size: self.size
+				pos: self.pos
+			Color: 
+				rgba: app.color_background2 if app.switch == True else app.color_background1
+			RoundedRectangle:
+				size: self.size[0] - 12, self.size[1] - 12
+				pos: self.pos[0] + 6, self.pos[1] + 6
+		BoxLayout:
+			size_hint: 1, .3
+			#Video:
+				#source: './img/logo.mp4'
+				#play: True
+				#state: 'play'
+			Image:
+				source: './img/logo.png'
+		BoxLayout:
+			size_hint: 1, .7
+			orientation: 'vertical'
+			padding: dp('5')
+			spacing: dp('5')
+			Botao:
+				text: "Estudar"
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.screen_manager.current = "estudar"
+					app.screen_manager.transition.direction = "left"
+					app.screen_manager.get_screen('estudar').carregar_conteudo()
+			Botao:
+				text: 'Matérias'
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.screen_manager.current = "materias"
+					app.screen_manager.transition.direction = "left"
+			Botao:
+				text: 'Configuração'
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.screen_manager.current = "configuracao"
+					app.screen_manager.transition.direction = "left"
+			Botao:
+				text: 'Sobre'
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.screen_manager.current = "sobre"
+					app.screen_manager.transition.direction = "left"
+			Botao:
+				text: 'Sair'
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.stop()
+			Botao:
+				text: 'Teste'
+				cor_fundo: app.color_button
+				cor_fundo_pressionado: app.color_button_pressed
+				on_release:
+					app.switch = not app.switch
+					app.change_size_window(app.switch, 400, 600)
+	
+	
